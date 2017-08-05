@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd"><!-- 此行使有提示 -->
+
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <constant name="struts.devMode" value="true" />
+    <package name="person" namespace="/"  extends="struts-default">
+        <action name="rf" class="com.kms.person.RoleFormAction">
+            <result>/view/ok.jsp</result>
+        </action>
+        
+        <action name="role_*" class="com.kms.person.RoleDimAction" method="{1}">
+            <result name="success">/view/ok.jsp</result>
+        </action>
+
+
+    </package>
+    <package name="default" namespace="/" extends="struts-default">
+   <!-- package name 不可重复  -->
+        <action name="hl" class="com.kms.action.HelloWorldAction" method="execute">
+            <result name="success">/view/HelloWorld.jsp</result>
+        </action>
+    </package>
+    <package name="view" namespace="/" extends="struts-default">
+        <action name="login" class="com.kms.action.LoginAction" method="login">
+            <result name="success">/view/ok.jsp</result>
+        </action>
+    </package>
+
+    <package name="_admin" namespace="/" extends="struts-default">
+        <action name="demo" class="com.kms.action.DemoAction" method="execute">
+            <result name="success">/view/ok.jsp</result>
+        </action>
+        <action name="demolmpl" class="com.kms.action.DemolmplAction">
+            <result name="success">/view/ok.jsp</result>
+        </action>
+        <action name="demoest" class="com.kms.action.DemoExitAction" method="execute">
+            <result name="success">/view/ok.jsp</result>
+        </action>
+    </package>
+
+  <!--<include file="./com.kms.action.demo.xml"/>-->
+
+</struts>
